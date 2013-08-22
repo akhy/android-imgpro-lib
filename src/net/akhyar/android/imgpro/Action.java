@@ -3,9 +3,7 @@ package net.akhyar.android.imgpro;
 import android.graphics.Bitmap;
 
 public abstract class Action {
-	protected abstract void adjustPixels(int[] pixels);
-
-	private int mask = 0xFFffffff;
+	protected abstract void adjustPixels(int[] colors);
 
 	public void adjustBitmap(Bitmap src) {
 		int width = src.getWidth();
@@ -37,13 +35,4 @@ public abstract class Action {
 		return ch;
 	}
 
-	public int getMask() {
-		return mask;
-	}
-
-	public Action setMask(int mask) {
-		this.mask = mask;
-
-		return this;
-	}
 }
