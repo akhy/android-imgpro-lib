@@ -21,7 +21,7 @@ public abstract class Action {
 		pixels = null;
 	}
 
-	protected int trunc(float ch) {
+	protected int clamp(float ch) {
 		if (ch > 255)
 			return 255;
 		if (ch < 0)
@@ -29,7 +29,7 @@ public abstract class Action {
 		return (int) ch;
 	}
 
-	protected int trunc(int ch) {
+	protected int clamp(int ch) {
 		if (ch > 255)
 			return 255;
 		if (ch < 0)

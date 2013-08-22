@@ -62,15 +62,15 @@ public class Blend extends Action {
 	}
 
 	protected int applyWithOpacity(int A, int B, float opacity) {
-		return trunc((int) (opacity * B + (1 - opacity) * A));
+		return clamp((int) (opacity * B + (1 - opacity) * A));
 	}
 
 	protected int apply(int A, int B, Mode mode) {
-		return trunc(mode.apply(A, B));
+		return clamp(mode.apply(A, B));
 	}
 
 	protected int apply(int A, int B, float O, Mode mode) {
-		return trunc(applyWithOpacity(A, mode.apply(A, B), O));
+		return clamp(applyWithOpacity(A, mode.apply(A, B), O));
 	}
 	
 	public static abstract class Mode {

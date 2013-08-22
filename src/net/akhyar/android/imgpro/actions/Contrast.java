@@ -29,9 +29,9 @@ public class Contrast extends Action {
 			B = Color.blue(pixels[i]);
 			B = (int) (((((B / 255.0) - 0.5) * contrast) + 0.5) * 255.0);
 			
-			R = trunc(R);
-			G = trunc(G);
-			B = trunc(B);
+			R = clamp(R);
+			G = clamp(G);
+			B = clamp(B);
 			
 			pixels[i] = Color.argb(A, R, G, B);
 		}

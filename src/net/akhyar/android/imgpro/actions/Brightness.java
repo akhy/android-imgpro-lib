@@ -16,7 +16,7 @@ public class Brightness extends Action {
 
 		int[] cache = new int[256];
 		for (int i = 0; i < cache.length; i++) {
-			cache[i] = trunc(i + offset);
+			cache[i] = clamp(i + offset);
 		}
 
 		for (int i = 0; i < pixels.length; i++) {
