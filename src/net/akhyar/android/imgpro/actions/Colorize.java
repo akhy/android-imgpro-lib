@@ -5,11 +5,11 @@ import android.graphics.Color;
 
 public class Colorize extends Action {
 
-	private int color;
+	private int colorMask;
 	private float factor;
 
-	public Colorize(float factor, int color) {
-		this.color = color;
+	public Colorize(float factor, int colorMask) {
+		this.colorMask = colorMask;
 		this.factor = factor;
 	}
 
@@ -18,9 +18,9 @@ public class Colorize extends Action {
 
 		int r, g, b;
 		int tR, tG, tB;
-		r = Color.red(this.color);
-		g = Color.green(this.color);
-		b = Color.blue(this.color);
+		r = Color.red(this.colorMask);
+		g = Color.green(this.colorMask);
+		b = Color.blue(this.colorMask);
 
 		Blend.Mode mode = Blend.Mode.LIGHTEN;
 		int[][] cache = new int[256][256];
