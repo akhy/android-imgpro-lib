@@ -65,7 +65,8 @@ public class ImgPro {
 		return result;
 	}
 
-	public static Bitmap alphaMask(Bitmap bmpSource, Bitmap bmpMask) {
+	public static Bitmap createBitmapWithAlphaMask(Bitmap bmpSource,
+			Bitmap bmpMask) {
 		int width = bmpSource.getWidth();
 		int height = bmpSource.getHeight();
 		int size = width * height;
@@ -81,9 +82,14 @@ public class ImgPro {
 		int alphamask = 0xff000000;
 		int colormask = 0x00ffffff;
 		for (int i = 0; i < size; i++) {
-			result[i] = (mask[i] & alphamask) + (result[i] & colormask);
+			result[i] = (mask[i] & alphamask) | (result[i] & colormask);
 		}
 
-		return Bitmap.createBitmap(result, width, height, Config.ARGB_8888);
+		// Ensuring the bitmap is mutable
+		Bitmap bmpResult = Bitmap.createBitmap(width, height,
+				Config.ARGB_8888);
+		bmpResult.setPixels(result, 0, width, 0, 0, width, height);
+
+		return bmpResult;
 	}
 }
